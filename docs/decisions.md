@@ -20,13 +20,19 @@ Changes from the GitHub Universe 2026 badge, with the reasoning. Newest last.
 | D-014 | 2026-10-07 | Keep the hardware Meshtastic-compatible | Future option; see requirements.md |
 | D-015 | 2026-10-07 | Licences: hardware CERN-OHL-P v2, firmware MIT, docs CC BY 4.0; credit Pimoroni & GitHub in NOTICE | Hobby project, anyone may reuse it. The reference is MIT, which permits this as long as its notice is kept |
 | D-016 | 2026-10-07 | No Tufty, GitHub or Pimoroni names or logos on the board or in the product name | Those are trademarks; the MIT licence covers copyright only |
+| D-017 | 2026-10-07 | Keep the 320×240 8-bit parallel LCD | Proven, and the existing Pimoroni driver fits our pins |
+| D-018 | 2026-10-07 | GPS antenna: ceramic chip antenna plus a u.FL footprint, chosen with a 0 Ω resistor | Compare both on the first boards |
+| D-019 | 2026-10-07 | Charger STAT drives a charge LED only; MAX17048 ALRT on GPIO12 | LED works with the MCU off; fuel gauge reports charge state; alert can wake the MCU |
+| D-020 | 2026-10-07 | Battery: 2500 mAh, up to 50 × 40 × 10 mm, max 1C charge and discharge, 3-wire with 10k NTC | Longer runtime with LoRa and GPS; NTC for safe charging above 1 A |
+| D-021 | 2026-10-07 | Replace the MCP73831 with an SGM41511 / BQ25601 switching charger (I2C 0x6B, power path) | A linear 500 mA charger would take about 6 h and run hot at higher current |
+| D-022 | 2026-10-07 | Charger INT on GPIO3; VBUS_DETECT stays on GPIO1 | Both signals on their own pins (uses the last spare GPIO) |
+| D-023 | 2026-10-07 | Replace the RT9080 LDO with a buck-boost regulator (e.g. TPS63802) | Uses the battery down to 3.0 V instead of about 3.6 V |
 
 ## Open items
 
-- [ ] **CHARGE_STAT:** drive a charge LED only (recommended; the fuel gauge gives
-      charge status), or route it to a GPIO.
-- [ ] **GPIO12:** use it for the MAX17048 `ALRT` low-battery interrupt?
-- [ ] **GPS antenna:** ceramic chip antenna on the PCB, or a second u.FL?
+- [x] **CHARGE_STAT:** LED only (D-019).
+- [x] **GPIO12:** MAX17048 `ALRT` (D-019).
+- [x] **GPS antenna:** chip antenna plus u.FL footprint (D-018).
 - [ ] **GPS module:** confirm MIA-M10Q stock and price; fallback is the Quectel L76K.
 - [ ] **LoRa module:** choose one covering 865 MHz with the antenna switch on
       DIO2 and a TCXO; confirm stock.
@@ -36,10 +42,14 @@ Changes from the GitHub Universe 2026 badge, with the reasoning. Newest last.
       datasheet before using it for LORA_NRESET.
 - [ ] **Internal I2C pull-ups:** they are on 3V3_SW, but the MAX17048 runs from
       the battery. Check its behaviour with the bus unpowered during sleep.
-- [ ] **Power budget:** confirm the 600 mA LDO covers LoRa TX, the RM2, the
-      backlight and the LEDs.
-- [ ] **Display:** keep the same LCD? Not yet reviewed.
-- [ ] **Battery:** capacity and size; is 455 mA charge current right?
+- [ ] **Power budget:** confirm the buck-boost regulator covers LoRa TX, the
+      RM2, the backlight and the LEDs at a 3.0 V cell.
+- [x] **Display:** same LCD (D-017).
+- [x] **Battery:** 2500 mAh, 1C max, NTC (D-020).
+- [ ] **Battery protection:** check the XB6096I2S trip current suits a 1C
+      (2.5 A) limit, or choose another protector.
+- [ ] **Charger:** SGM41511 vs BQ25601 stock; USB-C input current (what the
+      charger can detect from the source).
 - [ ] **Board:** outline and size, layer count, assembly (full JLCPCB or partly
       by hand).
 - [x] **Licence:** decided (D-015).

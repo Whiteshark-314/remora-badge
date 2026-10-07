@@ -10,7 +10,7 @@ assignment, for comparison.
 | 0 | PIO | `LED_DATA` | `CL0` | WS2812-style data, 4 LEDs chained |
 | 1 | In | `VBUS_DETECT` | `CL1` | USB present, 5.1k/5.1k divider. Can wake from sleep |
 | 2 | Out | `SW_POWER_EN` | `CL2` | Enables the 3V3_SW load switch |
-| 3 | — | *spare* | `CL3` | |
+| 3 | In | `CHG_INT` | `CL3` | SGM41511 charger interrupt (open drain, active low) |
 | 4 | I2C0 SDA | `I2C_QWST_SDA` | same | Qw/ST connector |
 | 5 | I2C0 SCL | `I2C_QWST_SCL` | same | Qw/ST connector |
 | 6 | In | `SW_DOWN` | same | |
@@ -19,7 +19,7 @@ assignment, for comparison.
 | 9 | In | `SW_B` | same | |
 | 10 | In | `SW_C` | same | |
 | 11 | In | `SW_UP` | same | |
-| 12 | — | *spare* | `VBUS_DETECT` | Proposed: MAX17048 `ALRT` (open) |
+| 12 | In | `FG_ALRT` | `VBUS_DETECT` | MAX17048 low-battery alert (open drain, active low) |
 | 13 | In | `CAP_ALERT` | same | CAP1208 interrupt |
 | 14 | In | `RESET_SW` | same | Reset button still held after boot |
 | 15 | In | `SWITCH_INT` | same | Diode-combined button wake |
@@ -49,7 +49,7 @@ assignment, for comparison.
 | 46 | SPI1 SCK | `LORA_SCK` | NC | |
 | 47 | SPI1 TX | `LORA_MOSI` | NC | |
 
-**Spare:** GPIO3 and GPIO12. No spare ADC pins.
+**Spare:** none. All 48 GPIOs are assigned; spare signals left are on the RM2 (below).
 
 PIO note: the RP2350's PIO blocks each address 32 consecutive GPIOs. The LCD
 (GPIO27–39) and the WS2812 data (GPIO0) need different PIO blocks; there are
@@ -64,7 +64,7 @@ boot), and cannot wake the MCU.
 | --- | --- | --- |
 | GPIO0 | *spare* | NC |
 | GPIO1 | *spare* | NC |
-| GPIO2 | *spare* if CHARGE_STAT goes to an LED (open) | `CHARGE_STAT` |
+| GPIO2 | *spare* (charge status now drives an LED and is readable over I2C) | `CHARGE_STAT` |
 
 ## I2C devices
 
@@ -73,6 +73,7 @@ boot), and cannot wake the MCU.
 | Internal (GPIO18/19) | 0x28 | CAP1208 touch |
 | Internal (GPIO18/19) | 0x36 | MAX17048 fuel gauge |
 | Internal (GPIO18/19) | 0x6A | LSM6DS3TR-C IMU |
+| Internal (GPIO18/19) | 0x6B | SGM41511 charger |
 | Qw/ST (GPIO4/5) | — | User add-ons |
 
 ## Dedicated pins (unchanged from reference)
