@@ -1,0 +1,29 @@
+# Reference designs (cloned separately, see reference/README.md)
+reference/*/
+
+# KiCad
+*-backups/
+*.kicad_prl
+fp-info-cache
+*.lck
+~*.lck
+_autosave-*
+*.bak
+*-bak
+\#auto_saved_files#
+
+# Arduino / PlatformIO
+build/
+.pio/
+*.elf
+*.uf2
+*.bin
+*.hex
+*.map
+
+# Editors and OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store

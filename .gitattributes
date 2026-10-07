@@ -1,0 +1,18 @@
+* text=auto
+
+# KiCad files are text; keep LF so diffs are stable across machines
+*.kicad_pro text eol=lf
+*.kicad_sch text eol=lf
+*.kicad_pcb text eol=lf
+*.kicad_sym text eol=lf
+*.kicad_mod text eol=lf
+*.kicad_dru text eol=lf
+
+# Binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.step binary
+*.stp binary
+*.wrl binary
+*.zip binary
