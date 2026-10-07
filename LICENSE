@@ -1,0 +1,17 @@
+Remora Badge licensing
+======================
+
+Copyright (c) 2026 Vaishakh C R
+
+This repository uses a different licence for each kind of content:
+
+| Content                     | Licence                                      | File                |
+| --------------------------- | -------------------------------------------- | ------------------- |
+| Hardware design (hardware/) | CERN Open Hardware Licence v2 - Permissive   | hardware/LICENSE    |
+|                             | SPDX: CERN-OHL-P-2.0                         |                     |
+| Firmware (firmware/)        | MIT                                          | firmware/LICENSE    |
+| Documentation (docs/, *.md) | Creative Commons Attribution 4.0             | docs/LICENSE        |
+|                             | SPDX: CC-BY-4.0                              |                     |
+
+The design is derived from the GitHub Universe 2026 badge, Copyright (c)
+Pimoroni & GitHub, used under the MIT License. See NOTICE.

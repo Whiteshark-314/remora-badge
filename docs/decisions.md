@@ -18,6 +18,8 @@ Changes from the GitHub Universe 2026 badge, with the reasoning. Newest last.
 | D-012 | 2026-10-07 | Move LIGHT_SENSE to GPIO40 | Needs an ADC pin; GPIO40–47 are the only ones |
 | D-013 | 2026-10-07 | Add a GPS module on UART0 (GPIO16 TX, GPIO17 RX), smallest available | Position for Meshtastic and own apps. Candidate: u-blox MIA-M10Q (4.5 × 4.5 mm) |
 | D-014 | 2026-10-07 | Keep the hardware Meshtastic-compatible | Future option; see requirements.md |
+| D-015 | 2026-10-07 | Licences: hardware CERN-OHL-P v2, firmware MIT, docs CC BY 4.0; credit Pimoroni & GitHub in NOTICE | Hobby project, anyone may reuse it. The reference is MIT, which permits this as long as its notice is kept |
+| D-016 | 2026-10-07 | No Tufty, GitHub or Pimoroni names or logos on the board or in the product name | Those are trademarks; the MIT licence covers copyright only |
 
 ## Open items
 
@@ -40,4 +42,5 @@ Changes from the GitHub Universe 2026 badge, with the reasoning. Newest last.
 - [ ] **Battery:** capacity and size; is 455 mA charge current right?
 - [ ] **Board:** outline and size, layer count, assembly (full JLCPCB or partly
       by hand).
-- [ ] **Repository:** licence and remote (GitHub or other).
+- [x] **Licence:** decided (D-015).
+- [ ] **Remote:** GitHub repo `Whiteshark-314/remora-badge`, public or private.

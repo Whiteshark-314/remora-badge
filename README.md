@@ -36,8 +36,17 @@ Phase 1: project setup and requirements. No schematic yet.
 4. **Fabrication:** Gerbers, BOM and placement files for JLCPCB assembly
 5. **Firmware:** Arduino-Pico bring-up, then application firmware; Meshtastic variant later
 
+## Licence
+
+| Content | Licence |
+| --- | --- |
+| Hardware (`hardware/`) | [CERN-OHL-P v2](hardware/LICENSE) (permissive open hardware) |
+| Firmware (`firmware/`) | [MIT](firmware/LICENSE) |
+| Documentation | [CC BY 4.0](docs/LICENSE) |
+
 ## Credits
 
-The core circuit is derived from the GitHub Universe 2026 badge schematic by
-Pimoroni (see `reference/`), which is itself based on the
-[Tufty 2350](https://shop.pimoroni.com/products/tufty-2350).
+The core circuit is derived from the GitHub Universe 2026 badge by Pimoroni and
+GitHub (MIT License), which is itself based on the
+[Tufty 2350](https://shop.pimoroni.com/products/tufty-2350). See [NOTICE](NOTICE).
+This project is not affiliated with or endorsed by Pimoroni or GitHub.
