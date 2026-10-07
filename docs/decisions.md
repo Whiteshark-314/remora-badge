@@ -43,4 +43,4 @@ Changes from the GitHub Universe 2026 badge, with the reasoning. Newest last.
 - [ ] **Board:** outline and size, layer count, assembly (full JLCPCB or partly
       by hand).
 - [x] **Licence:** decided (D-015).
-- [ ] **Remote:** GitHub repo `Whiteshark-314/remora-badge`, public or private.
+- [x] **Remote:** public at https://github.com/Whiteshark-314/remora-badge
