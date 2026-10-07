@@ -10,7 +10,7 @@ Longer term, the board is meant to be able to run
 
 ## Status
 
-Phase 1: project setup and requirements. No schematic yet.
+Phase 1 (setup) is done; Phase 2 (schematic) is next. See [docs/status.md](docs/status.md).
 
 ## Repository layout
 
@@ -23,6 +23,7 @@ Phase 1: project setup and requirements. No schematic yet.
 
 ## Key documents
 
+- [Status](docs/status.md): where the project stands and what to do next
 - [Requirements](docs/requirements.md): what the board must do, block by block
 - [Pin map](docs/pinmap.md): RP2350B GPIO and RM2 GPIO assignments
 - [Decision log](docs/decisions.md): what changed from the reference design and why
