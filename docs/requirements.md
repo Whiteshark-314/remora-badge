@@ -42,6 +42,13 @@ reasons for each change are in [decisions.md](decisions.md).
 | Expansion | Qw/ST I2C connector (GPIO4/5) | Same |
 | Debug | 3-pin SWD header | Same |
 
+## Mechanical
+
+- Board size: within the GitHub Universe 2026 / Tufty 2350 envelope. The
+  Tufty 2350 measures 84 × 76 × 20 mm in its case; the PCB outline is to be
+  set slightly smaller once the case is chosen.
+- The 50 × 40 × 10 mm battery mounts on the back.
+
 ## Electrical requirements
 
 - All RP2350 I/O is 3.3 V. No GPIO may see 5 V.

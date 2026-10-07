@@ -2,17 +2,20 @@
 
 Parts carried over from the reference design are listed in
 [requirements.md](requirements.md). This file tracks new or changed parts.
+Sourcing: any online distributor (Mouser, DigiKey, LCSC); assembly may be
+local, so JLCPCB stock is not required. Prices are single-unit, checked
+2026-10-07.
 
-| Function | Candidate | Package | Status | To check |
-| --- | --- | --- | --- | --- |
-| Fuel gauge | Analog Devices MAX17048 | 2 × 2 mm DFN-8 / WLP | Chosen | Stock; I2C behaviour with bus pull-ups unpowered |
-| LoRa | SX1262 module, e.g. Seeed Wio-SX1262 or Heltec HT-RA62 | Module | Candidates | 865 MHz coverage, antenna switch on DIO2, TCXO, stock, price |
-| GPS | u-blox MIA-M10Q | 4.5 × 4.5 mm LGA SiP | Preferred | Stock, price, antenna design, assembly |
-| GPS (fallback) | Quectel L76K | 10.1 × 9.7 mm | Fallback | Stock |
-| RGB LEDs | WS2812B-compatible, 3.3 V-rated | TBD | Open | Minimum supply voltage and data-high threshold at 3.3 V |
-| LoRa antenna connector | u.FL (IPEX MHF1) | SMD | Chosen | Footprint |
-| GPS antenna | Ceramic GNSS chip antenna + u.FL footprint | SMD | Chosen | Part, keep-out area, matching |
-| Charger | SG Micro SGM41511 or TI BQ25601 | QFN-24 4 × 4 mm | Chosen | Stock; inductor; input-current detection |
-| 3.3 V regulator | TI TPS63802 buck-boost | 2 × 3 mm QFN | Preferred | Stock; peak current at 3.0 V input; inductor |
-| Battery | 1-cell LiPo, 2500 mAh, ≤ 50 × 40 × 10 mm, 10k NTC, 3-pin | — | Chosen | Supplier; connector (e.g. JST PH 3-pin); pinout |
-| Battery protection | XB6096I2S (from reference) | — | To check | Over-current trip vs 1C |
+| Function | Part (MPN) | Package | Price / stock | Status | Notes and checks |
+| --- | --- | --- | --- | --- | --- |
+| Fuel gauge | Analog Devices MAX17048G+T10 | 2 × 2 mm TDFN-8 | Mouser $4.45 (19k), DigiKey $4.61 (24k) | Proposed | Check behaviour with internal I2C pull-ups unpowered |
+| Charger | TI BQ25601DRTWR | 4 × 4 mm WQFN-24 | DigiKey $3.45 (9.7k), Mouser $3.39 (773) | Proposed | "D" variant adds USB charger-type detection (BC1.2) on D+/D-, shared with the RP2350 USB lines. SGM41511 is LCSC-only |
+| 3.3 V regulator | TI TPS63802DLAR | 2 × 3 mm VSON-10 | DigiKey $3.40 (19.5k) | Proposed | 2 A buck-boost, 1.3–5.5 V in |
+| LoRa | Seeed Wio-SX1262 (bulk, 114993390) | SMD module with IPEX | DigiKey $5.95 (2.2k) | Proposed | TCXO on DIO3; antenna switch needs DIO2 **and** RF_SW (inverse of DIO2): drive RF_SW from DIO2 through an inverter (74LVC1G04), no GPIO. Tuned for 868–960 MHz; IN865 (865–867) is just below, so expect a small loss |
+| GPS | u-blox MIA-M10Q-00B | 4.5 × 4.5 mm LGA | Mouser $9.31 (31.8k); DigiKey out of stock | Proposed | Fine-pitch LGA: check the local assembler can place it |
+| GPS antenna | Johanson 1575AT43A0040001E chip antenna | 1206-size chip | DigiKey $0.94 (26k) | Proposed | Plus u.FL footprint and 0 Ω selector; needs ground clearance per datasheet |
+| RGB LEDs | Opsco SK6812MINI-E (reverse mount) | 3.2 × 2.8 mm | LCSC (140k) | Proposed | Rated 3.7–5.5 V, so no true 3.3 V part found. Power from the charger's SYS rail through a load switch on SW_POWER_EN; 3.3 V data is above 0.7 × VDD while SYS ≤ 4.7 V; firmware turns LEDs off below about 3.7 V battery |
+| Battery connector | JST S3B-PH-SM4-TB(LF)(SN), 3-pin PH, SMD right-angle | — | Mouser/DigiKey $0.57 (35k+) | Proposed | No standard polarity for 3-pin LiPo packs: check the battery's pinout |
+| Battery | 1-cell LiPo, about 2500 mAh, ≤ 50 × 40 × 10 mm (e.g. 104050 size), 10k NTC, 3-wire | — | — | To source | |
+| LoRa antenna connector | On the Wio-SX1262 module (IPEX) | — | — | Proposed | |
+| Battery protection | XB6096I2S (from reference) | — | — | To check | Over-current trip vs 1C |
